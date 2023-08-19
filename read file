@@ -1,0 +1,4 @@
+mkdir public-ip
+Go insid public-ip diretory
+docker build -t public-ip .
+docker run -p 8080:8080 -t public-ip
