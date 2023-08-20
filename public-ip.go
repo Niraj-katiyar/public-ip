@@ -1,13 +1,17 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
-    "io/ioutil"
+        "github.com/gin-gonic/gin"
+        "net/http"
+        "fmt"
+        "io/ioutil"
 )
-
 func main() {
-    response, err := http.Get("https://httpbin.org/ip")
+        r := gin.Default()
+
+        r.GET("/", func(c *gin.Context) {
+                c.String(http.StatusOK, "hello world1")
+response, err := http.Get("https://httpbin.org/ip")
     if err != nil {
         fmt.Println("Error:", err)
         return
@@ -21,4 +25,8 @@ func main() {
     }
 
     fmt.Println("Public IP:", string(body))
-}
+
+        })
+
+        r.Run()
+        }
